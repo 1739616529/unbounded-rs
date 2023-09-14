@@ -1,0 +1,30 @@
+
+function init() {
+    rm -rf ./dist
+    mkdir dist
+}
+
+function build() {
+    cargo build --release &
+    cd ./crates/web && npm run build &
+
+    wait
+}
+
+function copy_static() {
+    cp -r ./crates/web/dist ./dist/static &
+    cp "./target/release/unbounded-rs" ./dist &
+
+    wait
+}
+
+function create_tgz() {
+    cd ./dist && tar czf ../unbounded-rs.tgz * &
+    wait
+}
+
+
+init
+build
+copy_static
+create_tgz
