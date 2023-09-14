@@ -2,6 +2,9 @@
     "name": "unbounded-rs",
     "version": "1.0.0",
     "description": "",
+    "workspaces": [
+        "crates/*"
+    ],
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
