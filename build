@@ -1,4 +1,4 @@
-
+#!/bin/bash
 function init() {
     rm -rf ./dist
     mkdir dist
@@ -13,7 +13,7 @@ function build() {
 
 function copy_static() {
     cp -r ./crates/web/dist ./dist/static &
-    cp "./target/release/unbounded-rs" ./dist &
+    cp ./target/release/unbounded-rs ./dist &
 
     wait
 }
