@@ -1,5 +1,8 @@
 import { createRouter, createWebHashHistory } from "vue-router"
 
+
+const user = new Map<string, any>()
+
 export default createRouter({
     history: createWebHashHistory(),
     routes: [

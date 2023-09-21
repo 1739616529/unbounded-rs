@@ -1,3 +1,5 @@
+use std::net::{Ipv4Addr, SocketAddr};
+
 use tokio::{
     net::{TcpListener, UdpSocket},
     spawn,
@@ -6,8 +8,12 @@ use tokio::{
 mod router;
 
 pub async fn run() {
-    let tcp_listener = TcpListener::bind("0.0.0.0:8956").await.unwrap();
-    let udp_socket = UdpSocket::bind("0.0.0.0:8956").await.unwrap();
+
+
+    let addr = SocketAddr::from(([0,0,0,0], 8956));
+    let tcp_listener = TcpListener::bind(&addr).await.unwrap();
+    let udp_socket = UdpSocket::bind(&addr).await.unwrap();
+
     let tcp_spawn_handle = spawn(async move {
         router::tcp_process(tcp_listener).await;
     });
