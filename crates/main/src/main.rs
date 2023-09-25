@@ -1,7 +1,7 @@
 
 use root;
-mod process;
 #[tokio::main]
 async fn main() {
-    root::init().await;
+    root::init::init().await;
+    root::start::start().await;
 }

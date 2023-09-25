@@ -610,6 +610,7 @@ dependencies = [
  "axum",
  "futures",
  "once_cell",
+ "serde",
  "serde_json",
  "tokio",
 ]
