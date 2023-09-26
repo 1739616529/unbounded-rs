@@ -7,9 +7,11 @@ import vueJsx from "@vitejs/plugin-vue-jsx";
 import { join } from "path";
 const config: UserConfigFn = ({ command }) => {
     const c = <UserConfig>{
-        base: "/ka-link",
         server: {
             host: true,
+            proxy: {
+                "^/api": "http://127.0.0.1:8956"
+            },
         },
         resolve: {
             alias: {
@@ -17,6 +19,8 @@ const config: UserConfigFn = ({ command }) => {
                 project: join(__dirname, "./"),
             },
         },
+
+
 
         plugins: [
             vue(),
